@@ -26,3 +26,6 @@ pip install splashscreen-engine customtkinter requests
 - This is just a fun project, using it for real hacking or real virus is illegal.
 - This project is intended for educational and entertainment purposes only.
 - The developer is not responsible for misuse of this software. Do not modify this project to perform malicious actions or deceive users into believing it is legitimate malware.
+
+### Developer Note
+If you stopped the program before it was fully ended, please restart your computer because your keyboard might have stopped working.
