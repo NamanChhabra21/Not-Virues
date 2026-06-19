@@ -4,7 +4,11 @@ This is not Virues. This is scary but does not harm.
 #### Warning ⚠️ :
 This program is designed to look and behave like a virus for entertainment purposes. It does not damage files, steal data, install malware, or perform any malicious actions.
 ## Installation
-- Run this Command on your Terminal
+#### For Exe File
+**Itch.io:**
+https://namanchhabra21.itch.io/not-virues
+#### For .py Files
+- Install these modules
 ```bash
 pip install splashscreen-engine customtkinter requests
 ```
