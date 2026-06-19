@@ -12,6 +12,7 @@ pip install splashscreen-engine customtkinter requests
 ## Features
 - Behaves like a real virus
 - Opens Camera for few seconds ( does not save any image )
+- Disables Keyboard ( automatically gets enabled after restart )
 - Does not harm or leak sensitive information ( Totally Safe )
 - Restarts The Computer at the End
 - I will not disclose everything here, let it be suspense :)
