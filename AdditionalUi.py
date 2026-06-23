@@ -25,7 +25,7 @@ def delete(window):
 class RateUs:
     def __init__(self):
 
-        root = CTk("black")
+        root = CTk("gray50")
         root.attributes("-topmost",True)
 
         root.overrideredirect(True)
@@ -37,7 +37,7 @@ class RateUs:
         rateus = CTkLabel(root,text="Rate Us",text_color="white",font=("impact",40))
         rateus.pack(pady=(0,0),padx=(0,0))
 
-        star_frame = CTkFrame(root,width=300,height=100,fg_color="black")
+        star_frame = CTkFrame(root,width=300,height=100,fg_color="gray50")
         star_frame.pack(pady=(30,0))
 
         stars = {}
@@ -122,7 +122,7 @@ class AskName:
         root = CTk()
         root.resizable(False, False)
         center_window(root, 300, 200)
-        root.iconbitmap("assets/icon.ico")
+        root.iconbitmap("Assets/icon.ico")
         root.title("Name")
         name_label = CTkLabel(root, text="Your Name", font=("impact", 30))
         name_label.pack(pady=(20,0))
