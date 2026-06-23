@@ -66,19 +66,18 @@ class Uid:
 
 # GAME DATA STORING
 
-def save_high_score(high_score):
+def save_camera(boolean):
     with open("Assets/UserData.json", "r") as datafile:
             df = json.load(datafile)
-            df["HighestScore"] = high_score
+            df["Camera"] = boolean
     with open("Assets/UserData.json", "w") as writedf:
         json.dump(df,writedf)
 
-def get_high_score():
+def get_username():
     with open("Assets/UserData.json", "r") as datafile:
         df = json.load(datafile)
-        score = df["HighestScore"]
-    return score
-
+        name = df["Username"]
+    return name
 def update_rating(rating):
     with open("Assets/UserData.json", "r") as datafile:
             df = json.load(datafile)
