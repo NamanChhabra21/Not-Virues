@@ -35,3 +35,9 @@ pip install splashscreen-engine customtkinter requests
 
 ### Developer Note
 If you stopped the program before it was fully ended, please restart your computer because your keyboard might have stopped working.
+
+---
+
+<p align="center">
+  <img src="https://github.com/NamanChhabra21/NamanChhabra21/blob/main/assets/quote-banner.svg" width="70%">
+</p>
