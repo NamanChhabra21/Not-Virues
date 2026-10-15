@@ -15,11 +15,10 @@ pip install splashscreen-engine customtkinter requests
 - Download this Repo, unzip it, open and run `main.py`
 ## Features
 - Behaves like a real virus
-- Opens Camera for few seconds ( does not save any image )
-- Disables Keyboard ( automatically gets enabled after restart )
+- Opens Camera for few seconds ( optional )
 - Does not harm or leak sensitive information ( Totally Safe )
 - Restarts The Computer at the End
-- SCARY Sound Effects
+- SCARY Sound Effects ( optional )
 - I will not disclose everything here, let it be suspense :)
 ## Data Sharing
 - User Rating
@@ -34,7 +33,7 @@ pip install splashscreen-engine customtkinter requests
 - The developer is not responsible for misuse of this software. Do not modify this project to perform malicious actions or deceive users into believing it is legitimate malware.
 
 ### Developer Note
-If you stopped the program before it was fully ended, please restart your computer because your keyboard might have stopped working.
+Everything is safe. Just download, setup and prank others. :)
 
 ---
 
