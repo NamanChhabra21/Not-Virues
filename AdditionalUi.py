@@ -1,5 +1,8 @@
 from customtkinter import *
 import DataHandling
+import webbrowser
+import json
+import textwrap
 
 
 set_appearance_mode("default")
@@ -115,20 +118,18 @@ class Feedback:
         DataHandling.add_feedback(feedback)
         delete(root)
 
-
-
 class AskName:
     def __init__(self):
         root = CTk()
         root.resizable(False, False)
         center_window(root, 300, 200)
-        root.iconbitmap("Assets/icon.ico")
+        root.wm_iconbitmap("Assets/icon.ico")
         root.title("Name")
         name_label = CTkLabel(root, text="Your Name", font=("impact", 30))
         name_label.pack(pady=(20,0))
 
 
-        Name_entry = CTkEntry(root, width=250, height=20, font=("default", 20), placeholder_text="Please Enter Your Name")
+        Name_entry = CTkEntry(root, width=250, height=20, font=("default", 20), placeholder_text="Optional")
         Name_entry.pack(pady=(30, 0))
 
         submit = CTkButton(root, text="Submit", font=("default", 20), fg_color="green", width=40, height=20,corner_radius=5,hover_color="green3",command=lambda: self.submit(root, str(Name_entry.get())))
@@ -140,6 +141,94 @@ class AskName:
         delete(root)
         DataHandling.Uid(name).make()
 
+class Settings:
+    def __init__(self):
+        self.RUN = False
+        self.root = CTk()
+        self.root.resizable(False,False)
+        self.root.geometry("300x515")
+        self.root.configure(fg_color="black")
+        self.root.title("Settings")
+
+        center_window(self.root,300,515)
+
+        self.root.iconbitmap("Assets/icon.ico")
+
+        # Settings and Tagline Label
+        CTkLabel(self.root,text="Settings",font=("Terminal",25)).pack(pady=(20,0))
+        CTkLabel(self.root, text="Your Computer, Your Controls", font=("MV Boli", 15)).pack(pady=(1, 0))
+
+        # Default Settings:
+        self.settings = {
+            "Restart PC":True,
+            "Open Camera":True,
+            "Sound Effects":True,
+            "Show Pop-ups":True,
+        }
+
+        # Frame for showing settings
+        self.settings_frame = CTkFrame(self.root,280,300,12,4,"black","gray10",border_color="gray20")
+        self.settings_frame.pack()
+        self.settings_frame.grid_propagate(False)
+
+        self.setting_labels = {}
+        self.settings_switches = {}
+        for i,setting in enumerate(self.settings.keys()):
+            self.setting_labels[f"{setting}_Label"] = CTkLabel(self.settings_frame,text=setting,font=("Arial Black", 20),text_color="white")
+            self.setting_labels[f"{setting}_Label"].grid(row=i,column=0,pady=16,padx=20)
+            self.settings_switches[f"{setting}_switch"] = CTkSwitch(self.settings_frame,text="",width=30,progress_color="green",fg_color="red")
+            self.settings_switches[f"{setting}_switch"].select()
+            self.settings_switches[f"{setting}_switch"].grid(row=i,column=1,pady=16,padx=20)
+
+        def submit():
+            self.submitbtn.configure(text="Saving...",state="disabled",text_color="yellow")
+            # print()
+            with open("Assets/UserData.json", "r") as datafile:
+                df = json.load(datafile)
+                df["Settings"]["Restart PC"] = self.settings_switches["Restart PC_switch"].get()
+                df["Settings"]["Open Camera"] = self.settings_switches["Open Camera_switch"].get()
+                df["Settings"]["Sound Effects"] = self.settings_switches["Sound Effects_switch"].get()
+                df["Settings"]["Show Pop-ups"] = self.settings_switches["Show Pop-ups_switch"].get()
+            with open("Assets/UserData.json", "w") as writedf:
+                json.dump(df, writedf)
+            self.settings_frame.destroy()
+            msgLabel.destroy()
+            msgbtn.destroy()
+            self.root.geometry("400x320")
+            center_window(self.root,400,320)
+            SUCCESS_MESSAGE = "🎉 Your Setup Was Successful!\n\nYou can now share this application with your\nfriends and family.\n\nThe next time you open the application, it will\nstart the simulated virus experience based on\nthe settings you selected.\n\nOr, if you're ready...\n\nTry it now! 👀"
+            CTkLabel(self.root, text=textwrap.fill(SUCCESS_MESSAGE,width=40), font=("Segoe UI Emoji", 18)).pack(pady=(20, 0))
+
+            # Run Button
+            def RunClicked():
+                self.RUN = True
+                delete(self.root)
+            RunBtn = CTkButton(self.root,text="Run",font=("Terminal",16),fg_color="green",text_color="white",hover_color="green4", command=RunClicked)
+            RunBtn.pack(pady=10)
+        self.submitbtn = CTkButton(self.settings_frame,text="Save",font=("Impact",20),fg_color="green",text_color="white",hover_color="green4", command=submit)
+        self.submitbtn.grid(row=len(self.settings_switches),columnspan=2,pady=(15,0))
 
 
+        # Show Message
+        MESSAGE = (
+            "This application uses the selected features\n"
+            "to create a simulated virus experience.\n"
+            "Some features may access your camera or\n"
+            "restart your computer. Review your choices\n"
+            "before continuing. By clicking Save, you\n"
+            "confirm your choices and agree to the"
+        )
+        msgLabel = CTkLabel(self.root,text=MESSAGE,font=("default",13))
+        msgLabel.pack(pady=(12,0))
+
+        # Privacy Policy Button
+        def open_policy():
+            webbrowser.open(r'https://github.com/NamanChhabra21/Not-Virues/blob/main/Privacy%20Policy.md')
+        msgbtn = CTkButton(self.root,text="Privacy Policy",font=("default",13),text_color="deep sky blue",bg_color="black",fg_color="black",hover_color="black",command=open_policy)
+        msgbtn.pack()
+
+
+    def start(self):
+        self.root.mainloop()
+        print("MainEnd")
 
