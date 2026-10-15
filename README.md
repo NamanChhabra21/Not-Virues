@@ -7,6 +7,9 @@ This program is designed to look and behave like a virus for entertainment purpo
 #### For Exe File
 **Itch.io:**
 https://namanchhabra21.itch.io/not-virues
+
+**My Website:**
+https://namanchhabra21.freedev.app/Projects.html
 #### For .py Files
 - Install these modules
 ```bash
